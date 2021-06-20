@@ -1,5 +1,6 @@
 // JS for the frontend
 
+
 const socket = io('/');
 
 const videoGrid = document.getElementById('video-grid');
@@ -30,6 +31,22 @@ navigator.mediaDevices.getUserMedia({
     socket.on('user-connected', (userId) => {
         connectToNewUser(userId, stream);
     })
+    let text = $('input')
+    console.log(text)
+
+    // 13 is for enter key
+    $('html').keydown((e) => {
+        if (e.which == 13 && text.val().length !== 0) {
+            console.log(text.val())
+            socket.emit('message', text.val());
+            text.val('')
+        }
+    });
+
+    socket.on('createMessage', message => {
+        console.log('this is coming from server', message)
+        $('.messages').append(`<li class="message"><b>USER</b></br>${message}</li>`)
+    })
 })
 
 peer.on('open', id => {
@@ -51,3 +68,10 @@ const addVideoStream = (video, stream) => {
     })
     videoGrid.append(video);
 }
+
+const scrollToBottom = () => {
+    let d = $('.main__chat_window');
+    d.scrollTop(d.prop("scollHeight"));
+}
+
+
