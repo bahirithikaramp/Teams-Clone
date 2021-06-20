@@ -70,6 +70,7 @@ video {
 
 .leave_meeting {
     color: #EB534B;
+    text-decoration: none;
 }
 
 .main__right {
@@ -108,4 +109,8 @@ video {
 
 .unmute, .stop{
     color: #CC3B33;
+}
+
+.board {
+    text-decoration: none;
 }

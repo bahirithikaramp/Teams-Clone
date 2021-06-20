@@ -9,3 +9,4 @@
 - Add the ability to create messages    (DONE)
 - Add mute button    (DONE)
 - Add stop video button    (DONE)
+- Adding whiteboard and leave meeting button    (DONE)
