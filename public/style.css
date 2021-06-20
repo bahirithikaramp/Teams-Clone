@@ -70,7 +70,6 @@ video {
 
 .leave_meeting {
     color: #EB534B;
-    text-decoration: none;
 }
 
 .main__right {
@@ -111,6 +110,7 @@ video {
     color: #CC3B33;
 }
 
-.board {
+a, a:hover, a:focus, a:active {
     text-decoration: none;
+    color: inherit;
 }
