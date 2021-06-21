@@ -1,6 +1,11 @@
+@-ms-viewport{
+    width: device-width;
+  }
+
 body {
     margin: 0;
     padding: 0;
+    min-width: 300px;
 }
 
 #video-grid {
@@ -115,36 +120,3 @@ a, a:hover, a:focus, a:active {
     color: inherit;
 }
 
-/* ----------- Non-Retina Screens ----------- */
-@media screen 
-  and (min-device-width: 1200px) 
-  and (max-device-width: 1600px) 
-  and (-webkit-min-device-pixel-ratio: 1) { 
-}
-
-/* ----------- Retina Screens ----------- */
-@media screen 
-  and (min-device-width: 1200px) 
-  and (max-device-width: 1600px) 
-  and (-webkit-min-device-pixel-ratio: 2)
-  and (min-resolution: 192dpi) { 
-} 
-
-/* For mobile phones: */
-[class*="col-"] {
-    width: 100%;
-  }
-  
-  @media screen and (min-width: 500px) {
-    body {
-       width: 50%;
-       
-    }
- }
- 
- @media screen and (min-width: 800px) {
-    body {
-       width:100%;
-    }
- }
-  
