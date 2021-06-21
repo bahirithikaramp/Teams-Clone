@@ -132,3 +132,31 @@ const setPlayVideo = () => {
     document.querySelector('.main__video_button').innerHTML = html;
 }
 
+const startScreenShare = () => {
+    navigator.mediaDevices["getDisplayMedia"](this.screenContraints)
+        .then(stream => {
+            this.isScreenShare = true;
+            console.log("media device steam", stream);
+            this.screenShareStream = stream;
+            /*  onGettingSteam(stream); */
+            if (stream) {
+                this.getUserMediaSuccess(stream); //this function simply displays stream to a video element.
+                stream.oninactive = () => {
+                    // console.log("SCREEN SHARE HAS BEEN STOPPED NOW!!!!!!!!!!!!!")
+    
+                    this.isScreenShare = false;
+    
+                    if (!this.hangedUpWhileSSActive) {
+                        // checks if the user wants to hang up or wants to continue with the video streaming
+                        navigator.mediaDevices
+                            .getUserMedia(this.constraints)
+                            .then(
+                                this.getUserMediaSuccess.bind(this),
+                                this.getUserMediaError.bind(this)
+                            );
+                    }
+                };
+            }
+        }, this.getUserMediaError.bind(this))
+        .catch(this.getUserMediaError.bind(this));
+      }

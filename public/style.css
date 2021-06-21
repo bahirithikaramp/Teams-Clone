@@ -5,7 +5,7 @@
 body {
     margin: 0;
     padding: 0;
-    min-width: 300px;
+    min-width: 200px;
 }
 
 #video-grid {
@@ -17,6 +17,8 @@ video {
     height: 300px;
     width: 400px;
     object-fit: cover;
+    transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
 }
 
 .main {
@@ -118,5 +120,14 @@ video {
 a, a:hover, a:focus, a:active {
     text-decoration: none;
     color: inherit;
+}
+
+button {     
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;  
+    color: #F5F5F5;      
 }
 
