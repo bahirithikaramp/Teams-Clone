@@ -3,6 +3,9 @@
 
 const socket = io('/');
 
+
+
+
 const videoGrid = document.getElementById('video-grid');
 const myVideo = document.createElement('video');
 myVideo.muted = true;
@@ -10,8 +13,9 @@ myVideo.muted = true;
 var peer = new Peer(undefined, {
     path: '/peerjs',
     host: '/',
-    port: '443'
+    port: '3030'
 }); 
+
 
 // promise to access the audio and video
 let myVideoStream
@@ -127,3 +131,4 @@ const setPlayVideo = () => {
     `
     document.querySelector('.main__video_button').innerHTML = html;
 }
+
