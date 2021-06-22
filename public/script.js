@@ -13,7 +13,7 @@ myVideo.muted = true;
 var peer = new Peer(undefined, {
     path: '/peerjs',
     host: '/',
-    port: '443'
+    port: '3030'
 }); 
 
 
@@ -52,6 +52,10 @@ navigator.mediaDevices.getUserMedia({
         $('.messages').append(`<li class="message"><b>USER</b></br>${message}</li>`)
     })
 })
+
+socket.on('user-disconnected', userId => {
+    if (peers[userId]) peers[userId].close()
+})  
 
 peer.on('open', id => {
     socket.emit('join-room', ROOM_ID, id);
@@ -132,31 +136,7 @@ const setPlayVideo = () => {
     document.querySelector('.main__video_button').innerHTML = html;
 }
 
-const startScreenShare = () => {
-    navigator.mediaDevices["getDisplayMedia"](this.screenContraints)
-        .then(stream => {
-            this.isScreenShare = true;
-            console.log("media device steam", stream);
-            this.screenShareStream = stream;
-            /*  onGettingSteam(stream); */
-            if (stream) {
-                this.getUserMediaSuccess(stream); //this function simply displays stream to a video element.
-                stream.oninactive = () => {
-                    // console.log("SCREEN SHARE HAS BEEN STOPPED NOW!!!!!!!!!!!!!")
-    
-                    this.isScreenShare = false;
-    
-                    if (!this.hangedUpWhileSSActive) {
-                        // checks if the user wants to hang up or wants to continue with the video streaming
-                        navigator.mediaDevices
-                            .getUserMedia(this.constraints)
-                            .then(
-                                this.getUserMediaSuccess.bind(this),
-                                this.getUserMediaError.bind(this)
-                            );
-                    }
-                };
-            }
-        }, this.getUserMediaError.bind(this))
-        .catch(this.getUserMediaError.bind(this));
-      }
+function startCapture(displayMediaOptions) {
+    return navigator.mediaDevices.getDisplayMedia(displayMediaOptions)
+       .catch(err => { console.error("Error:" + err); return null; });
+}
