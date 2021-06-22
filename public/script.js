@@ -13,7 +13,7 @@ myVideo.muted = true;
 var peer = new Peer(undefined, {
     path: '/peerjs',
     host: '/',
-    port: '3030'
+    port: '443'
 }); 
 
 
@@ -137,6 +137,12 @@ const setPlayVideo = () => {
 }
 
 function startCapture(displayMediaOptions) {
-    return navigator.mediaDevices.getDisplayMedia(displayMediaOptions)
-       .catch(err => { console.error("Error:" + err); return null; });
+    const enable = navigator.mediaDevices.getDisplayMedia(displayMediaOptions)
+        .catch(err => { console.error("Error:" + err); return null; });
+    if (enable) {
+        return videoGrid.append(enable);
+    }
+    else {
+        return null;
+    }
 }
