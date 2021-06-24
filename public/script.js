@@ -136,13 +136,41 @@ const setPlayVideo = () => {
     document.querySelector('.main__video_button').innerHTML = html;
 }
 
-function startCapture(displayMediaOptions) {
+
+/*function startCapture(displayMediaOptions) {
     const enable = navigator.mediaDevices.getDisplayMedia(displayMediaOptions)
         .catch(err => { console.error("Error:" + err); return null; });
     if (enable) {
-        return videoGrid.append(enable);
+        socket.emit('video', enable);
     }
     else {
         return null;
     }
+}*/
+
+const shareUnshare = () => {
+    let enable = navigator.mediaDevices.getUserMedia();
+    if (enable) {
+        myVideoStream.mediaDevices.getUserMedia() = true;
+        startCapture()
+    } else {
+        myVideoStream.mediaDevices.getUserMedia() = false;
+        stopCapture()
+    }
+}
+
+const startCapture = () => {
+    const html = `
+        <i class="stop fas fa-eye-slash"></i>
+        <span>Stop Screen Share</span>
+    `
+    document.querySelector('.main__share_button').innerHTML = html;
+}
+
+const stopCapture = () => {
+    const html = `
+        <i class="stop fas fa-eye"></i>
+        <span>Screen Share</span>
+    `
+    document.querySelector('.main__share_button').innerHTML = html;
 }
