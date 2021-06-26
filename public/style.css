@@ -17,9 +17,8 @@ video {
     height: 300px;
     width: 400px;
     object-fit: cover;
-    transform: rotateY(180deg);
-    -webkit-transform: rotateY(180deg);
 }
+
 
 .main {
     height: 100vh;
