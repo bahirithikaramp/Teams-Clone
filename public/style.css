@@ -74,9 +74,6 @@ video {
     border-radius: 5px;
 }
 
-.leave_meeting {
-    color: #EB534B;
-}
 
 .main__right {
     display: flex;
@@ -127,6 +124,7 @@ button {
     border: none;
     cursor:pointer;
     overflow: hidden;  
-    color: #F5F5F5;      
+    color:  #EB534B;    
+      
 }
 
