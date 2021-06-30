@@ -37,5 +37,6 @@ Plan of action:
     10. Adding whiteboard and leave meeting button.  
     11. Adding share screen option.  
     12. Adding user authentication.  
+    13. Removing screen freeze when user leaves meeting.
   
   

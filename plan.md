@@ -10,3 +10,6 @@
 - Add mute button    (DONE)
 - Add stop video button    (DONE)
 - Adding whiteboard and leave meeting button    (DONE)
+- Add screen share    (DONE)
+- Add user authentication    (working)
+- Remove screen freeze when user leaves meeting.   (DONE)

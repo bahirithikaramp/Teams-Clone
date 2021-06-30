@@ -7,11 +7,14 @@ const videoGrid = document.getElementById('video-grid');
 const myVideo = document.createElement('video');
 myVideo.muted = true;
 
+/* Array to store the users */
+const peers = {}
+
 /* Creating a peer connection with port 443 (for hosting on heroku) */
 var peer = new Peer(undefined, {
     path: '/peerjs',
     host: '/',
-    port: '3030'
+    port: '443'
 }); 
 
 
@@ -33,10 +36,10 @@ navigator.mediaDevices.getUserMedia({
     socket.on('user-connected', (userId) => {
         connectToNewUser(userId, stream);
     })
+
     let text = $('input')
     console.log(text)
-
-    /* 13 is for enter key and display the message created by the user on screen*/
+    /* 13 is for enter key and display the message created by the user on screen */
     $('html').keydown((e) => {
         if (e.which == 13 && text.val().length !== 0) {
             console.log(text.val())
@@ -44,16 +47,15 @@ navigator.mediaDevices.getUserMedia({
             text.val('')
         }
     });
-
     socket.on('createMessage', message => {
         console.log('this is coming from server', message)
         $('.messages').append(`<li class="message"><b>USER</b></br>${message}</li>`)
     })
 })
 
-/* Function when the user leaves the meeting */
+/* Function to remove the user when they leave the meeting */
 socket.on('user-disconnected', userId => {
-    if (peer[userId]) peer[userId].close()
+    if (peers[userId]) peers[userId].close()
 })  
 
 /* Function to let a new user join a room */
@@ -68,6 +70,10 @@ const connectToNewUser = (userId, stream) => {
     call.on('stream', userVideoStream => {
         addVideoStream(video, userVideoStream)
     })
+    call.on('close', () => {
+        video.remove()
+    })
+    peers[userId] = call
 }
 
 /* Function to add the video stream of the users' to te screen */
