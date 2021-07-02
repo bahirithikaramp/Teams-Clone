@@ -30,12 +30,13 @@ initializePassport(
 
 /* Using a local array for storing user login credentials */
 const users = []
+console.log(users);
 
 /* Setting the view (frontend) of the application to ejs */
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
 
-/* Start of user authentication 
+/* Start of user authentication */
   app.use(express.urlencoded({ extended: false }))
   app.use(flash())
   app.use(session({
@@ -47,7 +48,10 @@ app.use(express.static('public'))
   app.use(passport.session())
   app.use(methodOverride('_method'))
   
-  
+  // Getting the unique roomId from the url
+  app.get('/:room', (req, res) => {
+    res.render('room', { roomId: req.params.room })
+  })
     
   app.get('/', checkAuthenticated, (req, res) => {
     res.render('room.ejs', { name: req.user.name })
@@ -84,6 +88,7 @@ app.use(express.static('public'))
     //
   app.delete('/logout', (req, res) => {
     req.logOut()
+    console.log(users);
     res.redirect('/login')
   })
   
@@ -100,12 +105,8 @@ app.use(express.static('public'))
     }
     next()
   }
- */
+ /* End of user authentication*/
 
-// Getting the unique roomId from the url
-app.get('/:room', (req, res) => {
-  res.render('room', { roomId: req.params.room })
-})
 
 /* Forming a peer to peer connection and allowing the user to enter the room */
 app.use('/peerjs', peerServer);
