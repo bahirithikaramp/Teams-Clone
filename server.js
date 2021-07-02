@@ -27,7 +27,7 @@ app.get('/:room', (req, res) => {
   res.render('room', { roomId: req.params.room })
 })
   
-  /* Using passportJS for user authentication */
+  /* Using passportJS for user authentication 
   const initializePassport = require('./passport-config');
   const { request } = require('http');
   initializePassport(
@@ -35,7 +35,7 @@ app.get('/:room', (req, res) => {
     email => users.find(user => user.email === email),
     id => users.find(user => user.id === id)
   )
-/* Start of user authentication 
+ Start of user authentication 
   /* Using a local array for storing user login credentials 
   const users = []
   console.log(users);
