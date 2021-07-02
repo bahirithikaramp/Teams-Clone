@@ -1,7 +1,7 @@
-/* For taking the environment variables from the .env file */
+/* For taking the environment variables from the .env file 
 if (process.env.NODE_ENV !== 'production') {
     require('dotenv').config()
-}
+}*/
 
 /* Import all necessary frameworks for the application */
 const express = require('express');
@@ -18,6 +18,8 @@ const { v4: uuidv4 } = require('uuid');
 const peerServer = ExpressPeerServer(server, {
     debug: true
 });
+
+app.use('/peerjs', peerServer);
 
 /* Setting the view (frontend) of the application to ejs */
 app.set('view engine', 'ejs')
@@ -100,6 +102,9 @@ app.use(express.static('public'))
   }
   End of user authentication*/
 
+  app.get('/', (req, res) => {
+    res.redirect(`/${uuidv4()}`);
+})
 
 // Getting the unique roomId from the url
 app.get('/:room', (req, res) => {
@@ -107,18 +112,15 @@ app.get('/:room', (req, res) => {
 })
 
 /* Forming a peer to peer connection and allowing the user to enter the room */
-app.use('/peerjs', peerServer);
-app.get('/', (req, res) => {
-    res.redirect(`/${uuidv4()}`);
-})
 
 /* using socket IO to allow two way communication */
 io.on('connection', socket => {
     socket.on('join-room', (roomId, userId) => {
         socket.join(roomId);
         socket.to(roomId).broadcast.emit('user-connected', userId);
-
-        socket.on('message', message => {
+        // messages
+          socket.on('message', message => {
+            // send messages to the same room
             io.to(roomId).emit('createMessage', message)
         })
 
