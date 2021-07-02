@@ -47,10 +47,7 @@ app.use(express.static('public'))
   app.use(passport.session())
   app.use(methodOverride('_method'))
   
-  // Getting the unique roomId from the url
-  app.get('/:room', (req, res) => {
-    res.render('room', { roomId: req.params.room })
-  })
+  
     
   app.get('/', checkAuthenticated, (req, res) => {
     res.render('room.ejs', { name: req.user.name })
@@ -105,6 +102,10 @@ app.use(express.static('public'))
   }
  */
 
+// Getting the unique roomId from the url
+app.get('/:room', (req, res) => {
+  res.render('room', { roomId: req.params.room })
+})
 
 /* Forming a peer to peer connection and allowing the user to enter the room */
 app.use('/peerjs', peerServer);
