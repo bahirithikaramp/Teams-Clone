@@ -7,11 +7,11 @@ if (process.env.NODE_ENV !== 'production') {
 const express = require('express');
 const { ExpressPeerServer } = require('peer');
 const app = express();
-const bcrypt = require('bcrypt')
+/*const bcrypt = require('bcrypt')
 const passport = require('passport')
 const flash = require('express-flash')
 const session = require('express-session')
-const methodOverride = require('method-override')
+const methodOverride = require('method-override')*/
 const server = require('http').Server(app);
 const io = require('socket.io')(server)
 const { v4: uuidv4 } = require('uuid');
@@ -23,9 +23,7 @@ const peerServer = ExpressPeerServer(server, {
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
 
-app.get('/:room', (req, res) => {
-  res.render('room', { roomId: req.params.room })
-})
+
   
   /* Using passportJS for user authentication 
   const initializePassport = require('./passport-config');
