@@ -19,19 +19,6 @@ const peerServer = ExpressPeerServer(server, {
     debug: true
 });
 
-/* Using passportJS for user authentication */
-const initializePassport = require('./passport-config');
-const { request } = require('http');
-initializePassport(
-  passport,
-  email => users.find(user => user.email === email),
-  id => users.find(user => user.id === id)
-)
-
-/* Using a local array for storing user login credentials */
-const users = []
-console.log(users);
-
 /* Setting the view (frontend) of the application to ejs */
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
@@ -40,8 +27,19 @@ app.get('/:room', (req, res) => {
   res.render('room', { roomId: req.params.room })
 })
   
+  /* Using passportJS for user authentication */
+  const initializePassport = require('./passport-config');
+  const { request } = require('http');
+  initializePassport(
+    passport,
+    email => users.find(user => user.email === email),
+    id => users.find(user => user.id === id)
+  )
+/* Start of user authentication 
+  /* Using a local array for storing user login credentials 
+  const users = []
+  console.log(users);
 
-/* Start of user authentication */
   app.use(express.urlencoded({ extended: false }))
   app.use(flash())
   app.use(session({
@@ -53,17 +51,14 @@ app.get('/:room', (req, res) => {
   app.use(passport.session())
   app.use(methodOverride('_method'))
   
-  // Getting the unique roomId from the url
-  app.get('/', checkAuthenticated, (req, res) => {
-    res.render('room.ejs', { name: req.user.name })
-  })
+  
     
   app.get('/login', checkNotAuthenticated, (req, res) => {
     res.render('login.ejs')
   })
     
   app.post('/login', checkNotAuthenticated, passport.authenticate('local', {
-    successRedirect: '/',
+    successRedirect: '/room',
     failureRedirect: '/login',
     failureFlash: true
   }))
@@ -101,12 +96,17 @@ app.get('/:room', (req, res) => {
     
   function checkNotAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
-      return res.redirect('/')
+      return res.redirect('/login')
     }
     next()
   }
- /* End of user authentication*/
+  End of user authentication*/
 
+
+// Getting the unique roomId from the url
+app.get('/', checkAuthenticated, (req, res) => {
+  res.render('room.ejs', { name: req.user.name })
+})
 
 /* Forming a peer to peer connection and allowing the user to enter the room */
 app.use('/peerjs', peerServer);
