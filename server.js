@@ -36,6 +36,11 @@ console.log(users);
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
 
+app.get('/:room', (req, res) => {
+  res.render('room', { roomId: req.params.room })
+})
+  
+
 /* Start of user authentication */
   app.use(express.urlencoded({ extended: false }))
   app.use(flash())
@@ -49,10 +54,6 @@ app.use(express.static('public'))
   app.use(methodOverride('_method'))
   
   // Getting the unique roomId from the url
-  app.get('/:room', (req, res) => {
-    res.render('room', { roomId: req.params.room })
-  })
-    
   app.get('/', checkAuthenticated, (req, res) => {
     res.render('room.ejs', { name: req.user.name })
   })
@@ -88,7 +89,6 @@ app.use(express.static('public'))
     //
   app.delete('/logout', (req, res) => {
     req.logOut()
-    console.log(users);
     res.redirect('/login')
   })
   
