@@ -35,7 +35,8 @@ const users = []
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
 
-/* Start of user authentication */
+/* Start of user authentication 
+  app.use(express.urlencoded({ extended: false }))
   app.use(flash())
   app.use(session({
     secret: process.env.SESSION_SECRET,
@@ -102,7 +103,7 @@ app.use(express.static('public'))
     }
     next()
   }
-/* End of user authentication */
+ */
 
 
 /* Forming a peer to peer connection and allowing the user to enter the room */
