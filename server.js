@@ -102,8 +102,8 @@ app.use(express.static('public'))
 
 
 // Getting the unique roomId from the url
-app.get('/', checkAuthenticated, (req, res) => {
-  res.render('room.ejs', { name: req.user.name })
+app.get('/:room', (req, res) => {
+  res.render('room', { roomId: req.params.room })
 })
 
 /* Forming a peer to peer connection and allowing the user to enter the room */
