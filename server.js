@@ -64,7 +64,7 @@ app.use(methodOverride('_method'))
 
 
 // setting our main route
-app.get('/', checkAuthenticated, (req, res) => {
+/*app.get('/', checkAuthenticated, (req, res) => {
     roomId = req.params.room,
     res.render('room.ejs', { name: req.user.name })    
 })
@@ -132,9 +132,12 @@ function checkNotAuthenticated(req, res, next) {
 // Getting the unique roomId from the url
 app.get('/:room', (req, res) => {
   res.render('room', { roomId: req.params.room })
-})
+})*/
 
 /* Forming a peer to peer connection and allowing the user to enter the room */
+app.get('/', (req, res) => {
+  res.redirect(`/${uuidv4()}`);
+})
 
 /* using socket IO to allow two way communication */
 io.on('connection', socket => {
