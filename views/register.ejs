@@ -1,82 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Register</title>
-  <!-- Adding styling to the login page -->
-  <style>
-    body {
-      background: url('https://t3.ftcdn.net/jpg/01/22/71/96/360_F_122719641_V0yw2cAOrfxsON3HeWi2Sf4iVxhv27QO.jpg');
-      background-size: 100% 100%;
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-    }
-    h1 {
-      color: cornsilk;
-      font-size: 60px;
-      font-weight: bolder;
-    }
-    form {
-      border: 3px solid #f1f1f1;
-      color: blanchedalmond;
-      font-size: 30px;
-      background: linear-gradient(indigo, purple);
-    }
-    input[type=text], input[type=email], input[type=password] {
-      width: 100%;
-      padding: 12px 20px;
-      margin: 8px 0;
-      display: inline-block;
-      border: 1px solid #ccc;
-      box-sizing: border-box;
-      color: grey;
-    }
-    button {
-      background-color: #04AA6D;
-      color: white;
-      font-size: 23px;
-      font-weight: bold;
-      padding: 14px 20px;
-      margin: 8px 0;
-      border: none;
-      cursor: pointer;
-      width: 100%;
-    }
-    button:hover {
-      opacity: 0.8;
-    }
-    a {
-      font-size: 28px;
-      color: cornsilk;
-      cursor: pointer;
-      padding: 5px 40px;
-    }
-    a:hover {
-      opacity: 0.8;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <!-- Adding styling to the login page -->
+    <style>
+        body {
+        background: url('https://t3.ftcdn.net/jpg/01/22/71/96/360_F_122719641_V0yw2cAOrfxsON3HeWi2Sf4iVxhv27QO.jpg');
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        }
+        h1 {
+        color: cornsilk;
+        font-size: 60px;
+        font-weight: bolder;
+        }
+        form {
+        border: 3px solid #f1f1f1;
+        color: blanchedalmond;
+        font-size: 30px;
+        background: linear-gradient(indigo, purple);
+        }
+        input[type=text], input[type=email], input[type=password] {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+        color: grey;
+        }
+        button {
+        background-color: #04AA6D;
+        color: white;
+        font-size: 23px;
+        font-weight: bold;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        }
+        button:hover {
+        opacity: 0.8;
+        }
+        a {
+        font-size: 28px;
+        color: cornsilk;
+        cursor: pointer;
+        padding: 5px 40px;
+        }
+        a:hover {
+        opacity: 0.8;
+        }
+    </style>
 </head>
 <body>
-  <h1>Register</h1>
-  <form action="/register" method="POST">
-    <div>
-      <label for="name">Name</label>
-      <input type="text" id="name" name="name" required>
-    </div>
-    <div>
-      <label for="email">Email</label>
-      <input type="email" id="email" name="email" required>
-    </div>
-    <div>
-      <label for="password">Password</label>
-      <input type="password" id="password" name="password" required>
-    </div>
-    <button type="submit">Register</button>
-  </form>
-  <br />
-  <br />
-  <!-- Let's the user to go to the login page once registered -->
-  <a href="/login">Login</a>
+    <h1> Register </h1>
+    <!-- We are going to post to a route inside of our server in the name of register -->
+    <form action="/register" method="POST">
+        <!-- Div for all information regarding login and the name -->
+        <div>
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div>
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <button type="submit">Register</button>
+    </form>
+    <a href="/login">Login</a>  <!-- Anchor tag to go to login page -->
 </body>
 </html>

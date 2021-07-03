@@ -1,30 +1,35 @@
-const LocalStrategy = require('passport-local').Strategy  /* Let's us authenticate the user's login id and password */
-const bcrypt = require('bcrypt')  /* Creating a hashed password to make the authentication secure */
+// put all the information for authentication
 
-/* Login autentication function */
-function initialize(passport, getUserByEmail, getUserById) {
-  const authenticateUser = async (email, password, done) => {
-    const user = getUserByEmail(email)
-    if (user == null) {
-      return done(null, false, { message: 'No user with that email' })
-    }
+const LocalStrategy = require('passport-local').Strategy    // for using the local method (password + emailid) for authentication
+const bcrypt = require('bcrypt')
 
-    try {
-      if (await bcrypt.compare(password, user.password)) {
-        return done(null, user)
-      } else {
-        return done(null, false, { message: 'Password incorrect' })
-      }
-    } catch (e) {
-      return done(e)
+function initialise(passport, getUserByEmail, getUserById) {
+    // function for authenticating the user
+    // we will call done whenever we are authenticating our user
+    const authenticateUser = async (email, password, done) => {
+        const user = getUserByEmail(email)   // function to return email of the user
+        if (user == null) {
+            return done(null, false, { message: 'No user with that email' })   // the three parameters of done - any error in serve, if user found, error message
+        }
+
+        try {   // to compare the hashed password
+            if (await bcrypt.compare(password, user.password)) {
+                return done(null, user)   // return the user as they have logged in as
+            } else {
+                return done(null, false, { message: 'Password incorrect' })  // if the two passwords did not match
+            }
+        } catch (e) {
+            return done(e)
+        }
     }
-  }
-  passport.use(new LocalStrategy({ usernameField: 'email' }, authenticateUser))
-  passport.serializeUser((user, done) => done(null, user.id))
-  passport.deserializeUser((id, done) => {
-    return done(null, getUserById(id))
-  })
+    
+    passport.use(new LocalStrategy({ usernameField: 'email' },    // setting up the possport local with the user credentials
+        authenticateUser))
+    passport.serializeUser((user, done) => done(null, user.id))   // serialise user to store inside of our session
+    passport.deserializeUser((id, done) => {
+        done(null, getUserById(id))
+    })
 }
 
-/* Exporting the authentication function */
-module.exports = initialize
+// exporting the initialise function
+module.exports = initialise
