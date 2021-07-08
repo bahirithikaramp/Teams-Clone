@@ -1,4 +1,4 @@
-In this project I am making a Microsoft Teams clone. I am deploying the created web app to Heroku.  
+In this project I am making a Microsoft Teams clone using NodeJS, ExpressJS and socket.io. For letting multiple users join the video chat I have used PeerJS for creating a peer-peer connection. I have deployed the created web app on Heroku. Below I have described the features, tech stack used and plan of action in detail.  
   
 The clone has the following features:  
   
