@@ -3,12 +3,12 @@ In this project I am making a Microsoft Teams clone. I am deploying the created 
 The clone has the following features:  
   
     1. User authentication (register, login, logout).  
-    2. Create a peer to peer connection.  
+    2. Creates a peer to peer connection.  
     3. Lets the user stream their audio and video/ disable them.  
     4. Lets the user create messages and send them in the chat window.  
     5. Lets the user share screen.  
     6. Lets user use the whiteboard provided.  
-    7. Chat room independent of the meeting.  
+    7. Lets the user use the multi user chat room independent of the meeting.  
   
   
 The frameworks used for building the clone are:  
@@ -21,7 +21,8 @@ The frameworks used for building the clone are:
     6. Express session - when implemented, every user of our API or website will be assigned a unique session, and this allows you to store the user state.  
     7. PeerJS - for creating a peer to peer connection.  
     8. uuid - for creating a new room id.  
-    9. dotenv - for using the environment variables in the process.
+    9. dotenv - for using the environment variables in the process.  
+    10. momentjs - for adding time stamp to the message in the chat room.  
   
   
 Plan of action:  
