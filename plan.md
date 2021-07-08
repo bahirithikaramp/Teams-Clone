@@ -11,5 +11,6 @@
 - Add stop video button    (DONE)
 - Adding whiteboard and leave meeting button    (DONE)
 - Add screen share    (DONE)
-- Add user authentication    (working)
-- Remove screen freeze when user leaves meeting.   (DONE)
+- Add user authentication    (working on localhost)
+- Remove screen freeze when user leaves meeting   (DONE)
+- Adding chat room independent of the meeting (ADOPT feature)    (DONE)
