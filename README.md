@@ -40,3 +40,5 @@ Plan of action:
     13. Removing screen freeze when user leaves meeting.
   
   
+Deployed URL : 
+    https://pacific-hamlet-30189.herokuapp.com/e07ca35f-f0cb-4290-b8cd-27323a50fa91
