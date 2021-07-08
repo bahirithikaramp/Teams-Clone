@@ -27,8 +27,8 @@ The frameworks used for building the clone are:
   
 Plan of action:  
   
-    1. Initialise our NodeJS project.  
-    2. Initialise our first view (what we will see on frontend).  
+    1. Initialise the NodeJS project.  
+    2. Initialise the first view (what we will see on frontend).  
     3. Create a room id.  
     4. Add the  ability to view our own video.  
     5. Add ability for others to stream their video.  
