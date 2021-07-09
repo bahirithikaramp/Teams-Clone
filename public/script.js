@@ -88,7 +88,7 @@ const addVideoStream = (video, stream) => {
 /* Let's the users' scroll to see their previous messages */
 const scrollToBottom = () => {
     let d = $('.main__chat_window');
-    d.scrollTop(d.prop("scollHeight"));
+    d.scrollTop(d.prop("scrollHeight"));
 }
 
 /* Start of function to let user mute and unmute audio */
@@ -158,3 +158,24 @@ async function startCapture(displayMediaOptions) {
       console.error("Error: " + err);
     }
 }
+
+$("#button").click(function(){
+    if($(this).html() == "Leave Meeting"){
+        $(this).html("Join Meeting");
+        $('#video').hide();
+        $('#main__controls').hide();
+        $('#body__main').css({
+            'background-color': 'black'
+        })
+        $('#chat__window').css({
+            'z-index': '1000 !important',
+            'width': '100%',
+            'height': '100%',
+            'position': 'absolute',
+        })
+    }
+    else{
+        $(this).html("Leave Meeting");
+        $('#video').show();
+    }
+});

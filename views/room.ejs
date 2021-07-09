@@ -25,15 +25,15 @@
     </script>
 </head>
 <body>
-    <div class="main"> <!-- Dividing the main into three blocks: Video Grid, Control Panel and Chat application -->
+    <div class="main" id="body__main"> <!-- Dividing the main into three blocks: Video Grid, Control Panel and Chat application -->
         <div class="main__left">
-            <div class="main__videos">
+            <div class="main__videos" id="video">
                 <!-- To display the video streams of the users' -->
                 <div id="video-grid">
 
                 </div>
             </div>
-            <div class="main__controls"> 
+            <div class="main__controls" id="main__controls"> 
                 <!-- First block of controls to let user stream their video, audio or turn them off -->
                 <div class="main__controls__block">
                     <div onclick="muteUnmute()" class="main__controls__button main__mute_button">
@@ -59,18 +59,23 @@
                        <i class="fas fa-comment-alt"></i>
                        <span><a href="https://fathomless-chamber-19683.herokuapp.com" target="_blank">Chat Room</a></span>
                     </div>
-                 </div>
-                 <div class="main__controls__block">
+                </div>
+                <div class="main__controls__block">
                      <!-- Third block of controls to let the user leave meeting/ logout -->
                     <div class="main__controls__button">
-                        <form action="/logout?_method=DELETE" method="POST">  <!-- Overriding POST with delete -->
-                            <button type="submit">Leave Meeting</button>
+                        <!--<form action="/logout?_method=DELETE" method="POST">    Overriding POST with delete -->
+                            <button type="button" class="max" id="button" onclick="max()">Leave Meeting</button>
                         </form>
                     </div>
-                 </div>
+                    <div class="main__controls__button">
+                        <form action="/logout?_method=DELETE" method="POST">   <!-- Overriding POST with delete -->
+                            <button type="submit"><i class="fas fa-sign-out-alt"></i><span>Log Out</span></button>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="main__right">
+        <div class="main__right" id="chat__window">
             <!-- Chat application for the user to send text messages -->
             <div class="main__header">
                 <h6>Chat</h6>
