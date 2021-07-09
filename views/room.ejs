@@ -67,6 +67,11 @@
                             <button type="button" class="max" id="button" onclick="max()">Leave Meeting</button>
                         </form>
                     </div>
+                    <div class="main__controls__button">
+                        <form action="/logout?_method=DELETE" method="POST">   <!-- Overriding POST with delete -->
+                            <button type="submit"><i class="fas fa-sign-out-alt"></i><span>Log Out</span></button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
