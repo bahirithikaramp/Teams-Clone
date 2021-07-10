@@ -42,7 +42,7 @@ app.use('/peerjs', peerServer);
 /* since we are getting information from forms and take the information to access in our req variables and post methods */
 app.use(express.urlencoded({ extended: false }))
 
-// setting up the app to use flash and session (of express)
+/* setting up the app to use flash and session (of express)
 app.use(flash())
 app.use(session({
     secret: process.env.SESSION_SECRET,    // secret key that will encrypt all our information
@@ -126,10 +126,10 @@ function checkNotAuthenticated(req, res, next) {
 /************************************* END OF USER AUTHENTICATION  *****************************************/
 
 
-/* Getting the unique roomId from the url ( necessary for heroku )
+/* Getting the unique roomId from the url ( necessary for heroku ) */
 app.get('/:room', (req, res) => {
   res.render('room', { roomId: req.params.room })
-}) */
+}) 
 
 /* Forming a peer to peer connection and allowing the user to enter the room */
 app.get('/', (req, res) => {
