@@ -159,6 +159,8 @@ async function startCapture(displayMediaOptions) {
     }
 }
 
+/* To expand the chat window when the user click leave meeting and show hide all other divisions */
+
 $("#button").click(function(){
     if($(this).html() == "Leave Meeting"){
         $(this).html("Join Meeting");

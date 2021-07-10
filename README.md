@@ -82,6 +82,10 @@ To ensure proper protection of the password I have used **Bcrypt** and hashed th
 - The security feature will ensure that only registered participants can enter the meeting..
 	> Bcrypt - password-hashing function based on Blowfish cipher
 
+# CI/ CD
+
+In this project I have also used CI/CD meaning **Continuous Integration Continuous Delivery**, thus any new change being pushed on Git is automatically reflected on Heroku.
+
 # DEPLOYMENT
 
 I have deployed the application on **Heroku**. I have deployed the application using pipelines, thus whenever any new changes are committed to the file all the changes are reflected in the Heroku application as well. Below I am attaching a link to my app :

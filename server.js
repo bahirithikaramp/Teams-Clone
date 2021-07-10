@@ -38,7 +38,7 @@ app.use(express.static('public'))
 
 app.use('/peerjs', peerServer);
 
-
+/************************************* START OF USER AUTHENTICATION  *****************************************/
 /* since we are getting information from forms and take the information to access in our req variables and post methods */
 app.use(express.urlencoded({ extended: false }))
 
@@ -123,6 +123,8 @@ function checkNotAuthenticated(req, res, next) {
     }
     next()  // if not authenticated then continue on with the call
 }
+/************************************* END OF USER AUTHENTICATION  *****************************************/
+
 
 /* Getting the unique roomId from the url ( necessary for heroku )
 app.get('/:room', (req, res) => {
