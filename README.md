@@ -102,3 +102,8 @@ For the chat room I created an Express application and deployed it on Heroku and
 [Link to Github repo](https://github.com/bahirithikaramp/ChatCord.git)  
 [Link to deployed chat room](https://fathomless-chamber-19683.herokuapp.com/)
 
+# SCREENSHOT
+
+## HASHED PASSWORD
+
+<img src="https://photos.app.goo.gl/xbiiYpRxGQSdxPys9"></img>
