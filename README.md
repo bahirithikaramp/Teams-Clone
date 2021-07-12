@@ -104,8 +104,28 @@ For the chat room I created an Express application and deployed it on Heroku and
 
 # SCREENSHOTS
 
-## HASHED PASSWORD
+## SECURITY
 
+### LOGIN/REGISTER PAGE
+
+<a href="https://im.ge/i/1rizC"><img src="https://i.im.ge/2021/07/12/1rizC.png" alt="1rizC.png" border="0"></a>
+
+### HASHED PASSWORD ON THE SERVER
 <a href="https://im.ge/i/1rr4S"><img src="https://i.im.ge/2021/07/12/1rr4S.png" alt="1rr4S.png" border="0"></a>
 
-Here the password input is "123", and after the password has been hashed using Blowfish cipher it has been stored on the server.
+Here the password input is "123" in the first case, and after the password has been hashed using Blowfish cipher it has been stored on the server.
+
+
+## MULTI USER CHAT ROOM (for entertainment)
+
+<a href="https://im.ge/i/1r5Oq"><img src="https://i.im.ge/2021/07/12/1r5Oq.png" alt="1r5Oq.png" border="0"></a>
+<a href="https://im.ge/i/1r9jp"><img src="https://i.im.ge/2021/07/12/1r9jp.png" alt="1r9jp.png" border="0"></a>
+
+## VIDEO CHAT ROOM WITH P2P CONNECTION
+
+### APP ON LOCAL SERVER
+<a href="https://im.ge/i/1rAy0"><img src="https://i.im.ge/2021/07/12/1rAy0.png" alt="1rAy0.png" border="0"></a>
+
+### APP ON HEROKU
+
+<a href="https://im.ge/i/1rGaY"><img src="https://i.im.ge/2021/07/12/1rGaY.png" alt="1rGaY.png" border="0"></a>
