@@ -102,8 +102,10 @@ For the chat room I created an Express application and deployed it on Heroku and
 [Link to Github repo](https://github.com/bahirithikaramp/ChatCord.git)  
 [Link to deployed chat room](https://fathomless-chamber-19683.herokuapp.com/)
 
-# SCREENSHOT
+# SCREENSHOTS
 
 ## HASHED PASSWORD
 
-<img src="https://photos.app.goo.gl/xbiiYpRxGQSdxPys9"></img>
+<a href="https://im.ge/i/1rr4S"><img src="https://i.im.ge/2021/07/12/1rr4S.png" alt="1rr4S.png" border="0"></a>
+
+Here the password input is "123", and after the password has been hashed using Blowfish cipher it has been stored on the server.
